@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block content %}
+  <!-- ***** Header Area End ***** -->
+
+  <section Id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+            SOCIAL SHELF
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="meetings-page" id="meetings">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="filters">
+<!--                <ul>-->
+<!--                  <li data-filter="*"  class="active">All </li>-->
+<!--                  <li data-filter=".soon">Love</li>-->
+<!--                  <li data-filter=".imp">Nature</li>-->
+<!--                  <li data-filter=".att">Music</li>-->
+<!--                    <a href="{% url 'cat' 'Food'  %}">Food</a></li>-->
+<!--                    -->
+<!--                    -->
+<!--                </ul>-->
+
+
+
+
+                        <form id="contact" action="{% url 'searching' %}" method="get">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <h2>SEARCH HERE !</h2>
+                  </div>
+
+
+                  <div class="col-lg-8">
+                    <fieldset>
+                      <input name="q" type="text" class="form-control" id="Comment" placeholder="SEARCH...." required="">
+
+                    </fieldset>
+                  </div>
+
+
+                </div>
+              </form>
+
+
+            </div>
+
+            <div class="col-lg-12">
+
+              <div class="row grid">
+ {% for i in pr %}
+                <div class="ol-lg-4 templatemo-item-col all att soon">
+
+
+                  <div class="meeting-item">
+
+                    <div class="thumb">
+
+                      <div class="price">
+
+                        <span>{{i.Owner.username}}</span>
+                      </div>
+                      <a href="{% url 'dphoto' i.id %}"><img src="{{i.Image.url}}" alt="" height="250px" width="250px"></a>
+                    </div>
+                    <div class="down-content">
+                    <div class="date">
+                        <h6>{{i.Date}}<span></span></h6>
+                      </div>
+                      <div>
+                      <a href="{% url 'dphoto' i.id %}"><h4>{{i.Title}}</h4></a>
+
+                      <p>{{i.Description}}<br></p>
+
+                        </div>
+
+
+
+
+                </div>
+
+
+              </div>
+
+            </div>
+                  {% endfor %}
+
+
+            <div class="col-lg-12">
+              <div class="pagination">
+                <ul>
+                  <li><a href="#">1</a></li>
+                  <li class="active"><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved.
+          <br>Design: <a href="https://templatemo.com/page/1" target="_parent" title="website templates">TemplateMo</a></p>
+    </div>
+  </section>
+
+{% endblock %}

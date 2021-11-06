@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block content %}
+  <!-- ***** Header Area End ***** -->
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+         OWN SHELF
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="meetings-page" id="meetings">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="filters">
+                 <div class="main-button-red">
+                  <div>
+
+                    <a href="{% url 'photo' %}">ALL</a>
+                  <a href="{% url 'hat' 'Food' %}">FOOD</a>
+                      <a href="{% url 'hat' 'Nature' %}">NATURE</a>
+                      <a href="{% url 'hat' 'Love' %}">LOVE</a>
+                      <a href="{% url 'hat' 'Music' %}">MUSIC</a>
+
+                </div>
+              </div>
+              </div>
+            </div>
+
+            <div class="col-lg-12">
+
+              <div class="row grid">
+ {% for i in pg.object_list %}
+                <div class="ol-lg-4 templatemo-item-col all att soon">
+
+
+                  <div class="meeting-item">
+
+                    <div class="thumb">
+
+                      <div class="price">
+
+                        <span>{{i.Owner.username}}</span>
+                      </div>
+                      <a href="{% url 'dphoto' i.id %}"><img src="{{i.Image.url}}" alt="" height="250px" width="250px"></a>
+                    </div>
+
+                    <div class="down-content">
+
+                    <div class="date">
+
+                        <h6>{{i.Date}}<span></span></h6>
+                      </div>
+
+                      <div>
+                      <a href="{% url 'dphoto' i.id %}"><h4>{{i.Title}}</h4></a>
+
+                      <p>{{i.Description|truncatewords:10}}<br></p>
+
+                        </div>
+
+
+
+
+                </div>
+
+  <div class="main-button-red">
+                                <a href="{% url 'update' i.id %}">UPDATE</a>
+                                <a href="{% url 'delete' i.id %}">DELETE</a>
+                             </div>
+              </div>
+
+            </div>
+
+                  {% endfor %}
+
+
+            <div class="col-lg-12">
+              <div class="pagination">
+                <ul>
+<!--                  <li><a href="#">1</a></li>-->
+<!--                  <li class="active"><a href="#">2</a></li>-->
+<!--                  <li><a href="#">3</a></li>-->
+<!--                  <li><a href="#"><i class="fa fa-angle-right"></i></a></li>-->
+
+                     {% for p in pg.paginator.page_range %}
+                                <a href="?page={{p}}" class="btn btn-warning"
+                                   {% if pg.number == p %}
+                                   active
+                                   {% endif %}>
+                                            {{p}}</a>
+                                            {% endfor %}
+
+                </ul>
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved.
+          <br>Design: <a href="https://templatemo.com/page/1" target="_parent" title="website templates">TemplateMo</a></p>
+    </div>
+  </section>
+
+{% endblock %}

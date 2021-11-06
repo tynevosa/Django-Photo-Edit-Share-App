@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="section main-banner" id="top" data-section="section1">
+
+          <image src="{% static 'assets/images/sky.jpg' %}" />
+      <div class="video-overlay header-text">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="caption">
+                     {% if user.is_authenticated %}
+              <h6>Hello,{{user.username}}</h6>
+              <h2>SETTINGS </h2>
+
+                  <p>Come ! Let us Enjoy the Art of Photography !</p>
+              <div class="main-button-red">
+                  <div>
+
+                      <a href="{% url 'profdis' %}">VIEW PROFILE</a>
+                      <a href="{% url 'update_profile' %}">UPDATE PROFILE</a>
+                      <a href="{% url 'delete' %}">DELETE PROFILE</a>
+                       {% endif %}
+
+                </div>
+
+              </div>
+
+          </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+      </div>
+
+  </section>
+  <!-- ***** Main Banner Area End ***** -->
+
+
+
+{% endblock %}

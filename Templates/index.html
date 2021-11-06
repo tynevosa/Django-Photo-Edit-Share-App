@@ -1,0 +1,61 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="section main-banner" id="top" data-section="section1">
+
+          <image src="{% static 'assets/images/sky.jpg' %}">
+      <div class="video-overlay header-text">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="caption">
+{% if user.is_authenticated %}
+              <h6>Hello,{{user.username}}</h6>
+                     {% endif %}
+
+              <h2>Welcome to Photo Shelf !</h2>
+             <p>Photography is the art, application, and practice of creating durable images by recording light, either electronically by means of an image sensor, or chemically by means of a light-sensitive material such as photographic film. </p>
+                  <p>Come ! Let us Enjoy the Art of Photography !</p>
+              <div class="main-button-red">
+                  <div>
+                     {% if user.is_authenticated %}
+                    <a href="{% url 'addphoto' %}">ADD PHOTO</a>
+                  <a href="{% url 'logout' %}">LOG OUT</a>
+                  {% else %}
+
+                      <a href="{% url 'signup' %}">Join Us Now!</a>
+                      <a href="{% url 'login' %}">Login</a>
+                      {% endif %}
+                </div>
+
+              </div>
+
+          </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+      </div>
+
+  </section>
+  <!-- ***** Main Banner Area End ***** -->
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
